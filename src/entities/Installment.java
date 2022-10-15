@@ -1,13 +1,17 @@
 package entities;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Installment {
 	
+	private DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+	
 	private LocalDate dueDate;
 	private Double amount;
+	
 	
 	private List<Installment> installments = new ArrayList<>();
 	
@@ -37,6 +41,10 @@ public class Installment {
 		this.amount = amount;
 	}
 	
+	@Override
+	public String toString() {
+		return dueDate.format(fmt) + " - " + String.format("%.2f", amount);
+	}
 	
 	
 	
